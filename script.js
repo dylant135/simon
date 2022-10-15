@@ -4,6 +4,8 @@ const cells = document.querySelectorAll('.cell');
 
 let arr = ['red', 'green', 'blue', 'yellow'];
 let answer = [];
+let guesses = [];
+let score = 0;
 
 start.addEventListener('click', startGame);
 function startGame() {
@@ -44,11 +46,38 @@ function displayColor() {
         }, 1500)
         i++;
     }
+    guesses = [...answer];
     cells.forEach(cell => {
         cell.addEventListener('click', guess);
     })
 }
 
-function guess() {
-    
+function guess(e) {
+    let targ = e.target;
+    let atrib = targ.getAttribute('id');
+    console.log(guesses);
+    if(atrib == guesses[0]) {
+        guesses.shift();
+    } else if(atrib != guesses[0]) {
+        alert('you lose');
+    }
+
+    if(guesses.length == 0) {
+        score++;
+        scoreDisplay.innerText = 'Score: ' + score;
+        round();
+    }
+
+    /*for(let i = 0; i < answer.length; i++) {
+        if(atrib == answer[i]) {
+            count--;
+            if(count == 0) {
+                score++;
+                scoreDisplay.innerText = 'Score: ' + score;
+                round();
+            } 
+        } else if(atrib != answer[0]) {
+            alert('you lose');
+        }
+    }*/
 }
