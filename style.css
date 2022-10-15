@@ -22,7 +22,7 @@
     cursor: pointer;
 }
 
-#score {
+#scoreDisplay {
     font-size: 2em;
     margin: 10px 0;
     display: none;
