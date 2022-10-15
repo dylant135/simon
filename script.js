@@ -5,7 +5,9 @@ const cells = document.querySelectorAll('.cell');
 let arr = ['red', 'green', 'blue', 'yellow'];
 let answer = [];
 let guesses = [];
+let colus = [];
 let score = 0;
+let turn = false;
 
 start.addEventListener('click', startGame);
 function startGame() {
@@ -21,50 +23,45 @@ function round() {
 }
 
 function displayColor() {
-    let i = 0;
-    while(i < answer.length) {
-        let theCell = answer[i];
-        switch(theCell) {
-            case 'red':
-                document.getElementById('red').style.backgroundColor = '#F5473F';
-                break;
-            case 'green':
-                document.getElementById('green').style.backgroundColor = '#5CE160';
-                break;
-            case 'blue':
-                document.getElementById('blue').style.backgroundColor = '#7C92D9';
-                break;
-            case 'yellow':
-                document.getElementById('yellow').style.backgroundColor = '#DBEA91';
-                break;
-        }
+    colus = [...answer];
+    function flash() {
+        let theCell = colus[0];
+        const it = document.getElementById(theCell);it.classList.add('white');
         setTimeout(() => {
-            document.getElementById('red').style.backgroundColor = 'red';
-            document.getElementById('green').style.backgroundColor = 'green';
-            document.getElementById('blue').style.backgroundColor = 'blue';
-            document.getElementById('yellow').style.backgroundColor = 'yellow';
-        }, 1500)
-        i++;
+            it.classList.remove('white');
+            colus.shift();
+            if(colus.length > 0) {
+                setTimeout(flash, 250);
+            }
+        }, 1000);
     }
-    guesses = [...answer];
-    cells.forEach(cell => {
-        cell.addEventListener('click', guess);
-    })
-}
+    flash();
+    
+
+    turn = true;
+    if(turn) {
+        guesses = [...answer];
+        console.log(guesses);
+        cells.forEach(cell => {
+            cell.addEventListener('click', guess);
+        })
+}}
 
 function guess(e) {
     let targ = e.target;
     let atrib = targ.getAttribute('id');
-    console.log(guesses);
+    console.log(atrib);
     if(atrib == guesses[0]) {
         guesses.shift();
     } else if(atrib != guesses[0]) {
         alert('you lose');
+        turn = false;
     }
 
     if(guesses.length == 0) {
         score++;
         scoreDisplay.innerText = 'Score: ' + score;
+        turn = false;
         round();
     }
 

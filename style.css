@@ -57,3 +57,7 @@
  #yellow {
     background-color: yellow;
  }
+
+ .white {
+    background-color: white !important;
+ }
