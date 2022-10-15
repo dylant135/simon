@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    width: 50vw;
+    text-align: center;
+    margin: auto;
+}
+
+#start {
+    font-size: 1.5em;
+    padding: 3px;
+    margin: 10px 0;
+    background-color: #77BAEA;
+    width: 100px;
+}
+
+#start:hover {
+    background-color: #3A8AC3;
+    cursor: pointer;
+}
+
+#score {
+    font-size: 2em;
+    margin: 10px 0;
+    display: none;
+}
+
+#game {
+    border: 5px solid black;
+    width: 400px;
+    border-collapse: collapse;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+}
+
+.cell {
+    width: 200px;
+    height: 200px;
+}
+
+ #red {
+    background-color: red;
+ }
+
+ #green {
+    background-color: green;
+ }
+ 
+ #blue {
+    background-color: blue;
+ }
+
+ #yellow {
+    background-color: yellow;
+ }
