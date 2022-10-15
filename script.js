@@ -53,9 +53,14 @@ function guess(e) {
     console.log(atrib);
     if(atrib == guesses[0]) {
         guesses.shift();
+        targ.classList.add('black');
+        setTimeout(() => {
+            targ.classList.remove('black');
+        }, 75);
     } else if(atrib != guesses[0]) {
-        alert('you lose');
+        alert('you lose, your score was ' + score);
         turn = false;
+        location.reload();
     }
 
     if(guesses.length == 0) {

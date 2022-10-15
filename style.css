@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    background-color: #CCBCF4;
 }
 
 #container {
@@ -29,17 +30,20 @@
 }
 
 #game {
-    border: 5px solid black;
-    width: 400px;
+    width: 600px;
     border-collapse: collapse;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     margin: auto;
 }
 
 .cell {
     width: 200px;
     height: 200px;
+    margin: 25px;
+    border: 4px solid black;
 }
 
  #red {
@@ -60,4 +64,8 @@
 
  .white {
     background-color: white !important;
+ }
+
+ .black {
+    background-color: black !important;
  }
